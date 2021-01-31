@@ -11,7 +11,7 @@ public class Chromosome {
 			Gene gene = new Gene(i);
 			gene.addActionListener(new geneListener(gene));
 			this.geneList.add(gene);
-			this.geneString = this.getGeneString() + gene.getBit();
+			this.geneString = this.geneString + gene.getBit();
 		}
 	}
 
@@ -24,15 +24,13 @@ public class Chromosome {
 			this.geneList.add(gene);
 		}
 	}
-	
-	public void updateGeneString() {
+
+	public String getUpdatedGeneString() {
 		this.geneString = "";
-		for( Gene gene: geneList) {
+		for (Gene gene : geneList) {
 			this.geneString = this.geneString + gene.getBit();
 		}
+		return this.geneString;
 	}
 
-	public String getGeneString() {
-		return geneString;
-	}
 }

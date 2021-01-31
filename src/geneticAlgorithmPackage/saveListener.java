@@ -17,17 +17,19 @@ public class saveListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		String filename = "SavedChromosome1.txt";
-		this.editableViewer.getChromosome().updateGeneString();
 
 		try {
 			PrintWriter printWriter = new PrintWriter(new File(filename));
-			printWriter.println(this.editableViewer.getChromosome().getGeneString());
+			printWriter.println(this.editableViewer.getChromosome().getUpdatedGeneString());
 			printWriter.close();
 		} catch (FileNotFoundException e1) {
 			System.out.println("File not found");
 			e1.printStackTrace();
 			return;
+		} catch (NullPointerException e2) {
+			System.out.println("No chromosome is present to save!");
+			e2.printStackTrace();
+			return;
 		}
-
 	}
 }
