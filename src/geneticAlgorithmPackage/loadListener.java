@@ -11,6 +11,7 @@ import javax.swing.JFileChooser;
 public class loadListener implements ActionListener {
 
 	private EditableViewer editableViewer;
+	private File selectedFile;
 
 	public loadListener(EditableViewer editableViewer) {
 		this.editableViewer = editableViewer;
@@ -18,25 +19,19 @@ public class loadListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		String filename = "Chromosome1.txt";
-		
-		
-		
 		JFileChooser fileChooser = new JFileChooser();
-		fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+		fileChooser.setCurrentDirectory(new File(System.getProperty("user.home") + System.getProperty("file.separator")
+				+ "git" + System.getProperty("file.separator") + "GeneticAlgorithm"
+				+ System.getProperty("file.separator") + "chromosomeRepo"));
 		int result = fileChooser.showOpenDialog(fileChooser);
 		if (result == JFileChooser.APPROVE_OPTION) {
-			File selectedFile = fileChooser.getSelectedFile();
-			System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+			this.selectedFile = fileChooser.getSelectedFile();
 		}
-		
-		
-		
-		
 
 		Scanner scanner = null;
+
 		try {
-			scanner = new Scanner(new File(filename));
+			scanner = new Scanner(this.selectedFile);
 			String geneString = "";
 			while (scanner.hasNext()) {
 				String line = scanner.nextLine();
@@ -44,7 +39,7 @@ public class loadListener implements ActionListener {
 				geneString += line;
 			}
 			Chromosome chromosome = new Chromosome(geneString);
-			this.editableViewer.frame.setTitle(this.editableViewer.title + ": " + filename);
+			this.editableViewer.frame.setTitle(this.editableViewer.title + ": " + this.selectedFile.getName());
 			this.editableViewer.createButtonGrid(chromosome);
 
 		} catch (FileNotFoundException e1) {

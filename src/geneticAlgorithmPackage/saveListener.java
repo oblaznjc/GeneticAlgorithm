@@ -6,9 +6,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+import javax.swing.JFileChooser;
+
 public class saveListener implements ActionListener {
 
 	private EditableViewer editableViewer;
+	private File selectedFile;
 
 	public saveListener(EditableViewer editableViewer) {
 		this.editableViewer = editableViewer;
@@ -16,10 +19,18 @@ public class saveListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		String filename = "SavedChromosome1.txt";
+
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setCurrentDirectory(new File(System.getProperty("user.home") + System.getProperty("file.separator")
+				+ "git" + System.getProperty("file.separator") + "GeneticAlgorithm"
+				+ System.getProperty("file.separator") + "chromosomeRepo"));
+		int result = fileChooser.showOpenDialog(fileChooser);
+		if (result == JFileChooser.APPROVE_OPTION) {
+			this.selectedFile = fileChooser.getSelectedFile();
+		}
 
 		try {
-			PrintWriter printWriter = new PrintWriter(new File(filename));
+			PrintWriter printWriter = new PrintWriter(this.selectedFile);
 			printWriter.println(this.editableViewer.getChromosome().getUpdatedGeneString());
 			printWriter.close();
 		} catch (FileNotFoundException e1) {
