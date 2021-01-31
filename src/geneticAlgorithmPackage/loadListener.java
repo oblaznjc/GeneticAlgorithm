@@ -16,11 +16,10 @@ public class loadListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		String filename = "Chromosome1.txt";
+		String filename = "Chromosome2.txt";
 		Scanner scanner = null;
 		try {
 			scanner = new Scanner(new File(filename));
-			// System.out.println("File contents are: ");
 			String geneString = "";
 			while (scanner.hasNext()) {
 				String line = scanner.nextLine();
@@ -28,8 +27,8 @@ public class loadListener implements ActionListener {
 				geneString += line;
 			}
 			Chromosome chromosome = new Chromosome(geneString);
-			editableViewer.createButtonGrid(chromosome);
-			// editableViewer.createButtonGrid();
+			this.editableViewer.createButtonGrid(chromosome);
+			this.editableViewer.frame.setTitle(this.editableViewer.title + ": " + filename);
 
 		} catch (FileNotFoundException e1) {
 			System.out.println("File not found");

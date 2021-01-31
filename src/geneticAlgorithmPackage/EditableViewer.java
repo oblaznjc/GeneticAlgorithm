@@ -9,12 +9,13 @@ import javax.swing.JTextField;
 
 public class EditableViewer {
 
-	private JFrame frame;
+	public JFrame frame;
 	private JPanel buttonGrid;
+	public static final String title = "Editable Chomosome Viewer";
 
-	public EditableViewer() {
+	public EditableViewer() { 
 		this.frame = new JFrame();
-		this.frame.setTitle("Editable Chomosome Viewer");
+		this.frame.setTitle(title);
 		this.buttonGrid = new JPanel();
 		this.frame.add(createAdminPanel(), BorderLayout.SOUTH);
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

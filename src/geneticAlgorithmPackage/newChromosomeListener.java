@@ -14,6 +14,8 @@ public class newChromosomeListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		this.editableViewer.createButtonGrid();
+		this.editableViewer.frame.setTitle(this.editableViewer.title + ": " + "New Chromosome");
+
 	}
 
 }
