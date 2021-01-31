@@ -11,9 +11,8 @@ public class Chromosome {
 			Gene gene = new Gene(i);
 			gene.addActionListener(new geneListener(gene));
 			this.geneList.add(gene);
-			this.geneString = this.getGeneString() + gene.bit;
+			this.geneString = this.getGeneString() + gene.getBit();
 		}
-		System.out.println(this.getGeneString());
 	}
 
 	public Chromosome(String geneString) {
@@ -24,8 +23,13 @@ public class Chromosome {
 			gene.addActionListener(new geneListener(gene));
 			this.geneList.add(gene);
 		}
-		System.out.println(this.getGeneString());
-
+	}
+	
+	public void updateGeneString() {
+		this.geneString = "";
+		for( Gene gene: geneList) {
+			this.geneString = this.geneString + gene.getBit();
+		}
 	}
 
 	public String getGeneString() {
