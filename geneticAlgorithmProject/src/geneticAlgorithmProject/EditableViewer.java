@@ -1,8 +1,14 @@
 package geneticAlgorithmProject;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,53 +17,65 @@ import javax.swing.JTextField;
 
 public class EditableViewer {
 
+	private JFrame frame;
+	private JPanel buttonGrid;
+
 	public EditableViewer() {
-		JFrame frame = new JFrame();
-		frame.setTitle("Editable Chomosome Viewer");
+		this.frame = new JFrame();
+		this.frame.setTitle("Editable Chomosome Viewer");
 
-		frame.add(createButtonGrid());
+		// createButtonGrid(); // May or may not add
+		this.buttonGrid = new JPanel();
 
-		
+		this.frame.add(createAdminPanel(), BorderLayout.SOUTH);
+
+		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.frame.setSize(500, 500);
+		this.frame.setVisible(true);
+
+	}
+
+	private JPanel createAdminPanel() {
 		JPanel adminPanel = new JPanel();
-		JButton mutateButton = new JButton("Mutate");
+		JButton newChromosomeButton = new JButton("New Chromosome");
 		JButton loadButton = new JButton("Load");
 		JButton saveButton = new JButton("Save");
+		JButton mutateButton = new JButton("Mutate");
 		JTextField mutationRate = new JTextField("Mutation Rate");
-		adminPanel.add(mutateButton);
+		adminPanel.add(newChromosomeButton);
 		adminPanel.add(loadButton);
 		adminPanel.add(saveButton);
+		adminPanel.add(mutateButton);
 		adminPanel.add(mutationRate);
-		frame.add(adminPanel, BorderLayout.SOUTH);
-		
-		
-		loadButton.addActionListener(new loadListener());
 
-
-		
-		
-		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(300, 300);
-		// frame.setResizable(false);
-		frame.setVisible(true);
-
+		loadButton.addActionListener(new loadListener(this));
+		saveButton.addActionListener(new saveListener());
+		newChromosomeButton.addActionListener(new newChromosomeListener(this));
+		return adminPanel;
 	}
 
-	private JPanel createAdminButtons() {
-		return null;
-
-	}
-
-	private JPanel createButtonGrid() {
-		ArrayList<JButton> buttonList = new ArrayList<>();
-		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(10, 10));
-		panel.setSize(300, 300);
+	public void createButtonGrid() {
+		this.buttonGrid.removeAll();
+		this.buttonGrid.setLayout(new GridLayout(10, 10));
 		for (int i = 0; i < 100; i++) {
 			Gene gene = new Gene(i);
 			gene.setSize(30, 30);
-			panel.add(gene);
+			this.buttonGrid.add(gene);
 		}
-		return panel;
+		this.frame.add(this.buttonGrid);
+		this.frame.setVisible(true);
+
 	}
+
+	public void createButtonGrid(Chromosome chromosome) {
+		this.buttonGrid.removeAll();
+		this.buttonGrid.setLayout(new GridLayout(10, 10));
+		for (Gene gene : chromosome.geneList) {
+			gene.setSize(30, 30);
+			this.buttonGrid.add(gene);
+		}
+		this.frame.add(this.buttonGrid);
+		this.frame.setVisible(true);
+	}
+
 }

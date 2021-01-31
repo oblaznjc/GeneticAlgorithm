@@ -7,7 +7,7 @@ public class ViewerMain {
 		handleOpenAll();
 	}
 
-	private static void handleOpenAll() {
+	public static void handleOpenAll() {
 		BestChromosomeViewer bestChromosomeViewer = new BestChromosomeViewer();
 		EditableViewer editableViewer = new EditableViewer();
 		PopulationViewer populationViewer = new PopulationViewer();

@@ -7,35 +7,41 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 
 public class loadListener implements ActionListener {
 
+	private EditableViewer editableViewer;
+
+	public loadListener(EditableViewer editableViewer) {
+		this.editableViewer = editableViewer;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		JFileChooser fileChooser = new JFileChooser();
-		int returnVal = fileChooser.showOpenDialog(fileChooser);
+		String filename = "Chromosome1.txt";
+		Scanner scanner = null;
 
-		if (returnVal == JFileChooser.APPROVE_OPTION) {
-			File file = fileChooser.getSelectedFile();
-			// This is where a real application would open the file.
-			try {
-				FileReader fileReader = new FileReader(file);
-				BufferedReader buffer = new BufferedReader(fileReader);
-				try {
-					System.out.println(buffer.readLine());
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		try {
+			scanner = new Scanner(new File(filename));
+			// System.out.println("File contents are: ");
+			String geneString = "";
+			while (scanner.hasNext()) {
+				String line = scanner.nextLine();
+				// System.out.println(line);
+				geneString += line;
 			}
+			Chromosome chromosome = new Chromosome(geneString);
+			editableViewer.createButtonGrid(chromosome);
+			// editableViewer.createButtonGrid();
 
-			 
-			System.out.println(file.toString());
+		} catch (FileNotFoundException e1) {
+			System.out.println("File not found");
+			e1.printStackTrace();
+			return;
 		}
+		scanner.close();
 	}
 }
