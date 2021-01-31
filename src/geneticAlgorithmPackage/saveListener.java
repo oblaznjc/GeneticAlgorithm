@@ -8,23 +8,28 @@ import java.io.PrintWriter;
 
 public class saveListener implements ActionListener {
 
+	private EditableViewer editableViewer;
+
+	public saveListener(EditableViewer editableViewer) {
+		this.editableViewer = editableViewer;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		String filename = "Chromosome2.txt";
-		PrintWriter printWriter = null;
+		String filename = "SavedChromosome1.txt";
 
 		try {
-			printWriter = new PrintWriter(new File(filename));
 
-			printWriter.println("101010101010");
-			printWriter.println("101010101010");
-			printWriter.println("101010101010");
+			PrintWriter printWriter = new PrintWriter(new File(filename));
 
+			printWriter.println(this.editableViewer.getChromosome().getGeneString());
+
+			printWriter.close();
 		} catch (FileNotFoundException e1) {
 			System.out.println("File not found");
 			e1.printStackTrace();
 			return;
 		}
-		printWriter.close();
+
 	}
 }

@@ -12,7 +12,7 @@ public class Gene extends JButton {
 	private static final Color zeroBitBackground = Color.BLACK;
 	private static final Color zeroBitForeground = Color.GREEN;
 
-	private int bit;
+	public int bit;
 
 	public Gene(int index) {
 		Random random = new Random();

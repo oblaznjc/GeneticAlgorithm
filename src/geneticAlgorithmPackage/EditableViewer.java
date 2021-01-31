@@ -11,9 +11,11 @@ public class EditableViewer {
 
 	public JFrame frame;
 	private JPanel buttonGrid;
-	public static final String title = "Editable Chomosome Viewer";
+	public final String title = "Editable Chomosome Viewer";
+	private Chromosome chromosome;
 
 	public EditableViewer() { 
+		this.chromosome = null;
 		this.frame = new JFrame();
 		this.frame.setTitle(title);
 		this.buttonGrid = new JPanel();
@@ -38,7 +40,7 @@ public class EditableViewer {
 		adminPanel.add(mutationRate);
 
 		loadButton.addActionListener(new loadListener(this));
-		saveButton.addActionListener(new saveListener());
+		saveButton.addActionListener(new saveListener(this));
 		newChromosomeButton.addActionListener(new newChromosomeListener(this));
 		return adminPanel;
 	}
@@ -46,8 +48,8 @@ public class EditableViewer {
 	public void createButtonGrid() {
 		this.buttonGrid.removeAll();
 		this.buttonGrid.setLayout(new GridLayout(10, 10));
-		Chromosome chromosome = new Chromosome();
-		for (Gene gene : chromosome.geneList) {
+		this.chromosome = new Chromosome();
+		for (Gene gene : getChromosome().geneList) {
 			gene.setSize(30, 30);
 			this.buttonGrid.add(gene);
 		}
@@ -57,14 +59,19 @@ public class EditableViewer {
 	}
 
 	public void createButtonGrid(Chromosome chromosome) {
+		this.chromosome = chromosome;
 		this.buttonGrid.removeAll();
 		this.buttonGrid.setLayout(new GridLayout(10, 10));
-		for (Gene gene : chromosome.geneList) {
+		for (Gene gene : this.getChromosome().geneList) {
 			gene.setSize(30, 30);
 			this.buttonGrid.add(gene);
 		}
 		this.frame.add(this.buttonGrid);
 		this.frame.setVisible(true);
+	}
+
+	public Chromosome getChromosome() {
+		return chromosome;
 	}
 
 }

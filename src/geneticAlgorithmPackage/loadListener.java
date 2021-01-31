@@ -16,7 +16,7 @@ public class loadListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		String filename = "Chromosome2.txt";
+		String filename = "Chromosome1.txt";
 		Scanner scanner = null;
 		try {
 			scanner = new Scanner(new File(filename));
@@ -27,9 +27,9 @@ public class loadListener implements ActionListener {
 				geneString += line;
 			}
 			Chromosome chromosome = new Chromosome(geneString);
-			this.editableViewer.createButtonGrid(chromosome);
 			this.editableViewer.frame.setTitle(this.editableViewer.title + ": " + filename);
-
+			this.editableViewer.createButtonGrid(chromosome);
+			
 		} catch (FileNotFoundException e1) {
 			System.out.println("File not found");
 			e1.printStackTrace();
