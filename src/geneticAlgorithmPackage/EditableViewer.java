@@ -49,8 +49,8 @@ public class EditableViewer {
 	public void createButtonGrid() {
 		this.buttonGrid.removeAll();
 		this.buttonGrid.setLayout(new GridLayout(10, 10));
-		for (int i = 0; i < 100; i++) {
-			Gene gene = new Gene(i);
+		Chromosome chromosome = new Chromosome();
+		for (Gene gene : chromosome.geneList) {
 			gene.setSize(30, 30);
 			this.buttonGrid.add(gene);
 		}
