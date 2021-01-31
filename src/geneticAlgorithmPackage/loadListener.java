@@ -18,7 +18,6 @@ public class loadListener implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		String filename = "Chromosome1.txt";
 		Scanner scanner = null;
-		System.out.println("a;slkdjfas;lkdjf;alskjdf");
 		try {
 			scanner = new Scanner(new File(filename));
 			// System.out.println("File contents are: ");

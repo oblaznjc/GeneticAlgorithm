@@ -15,12 +15,8 @@ public class EditableViewer {
 	public EditableViewer() {
 		this.frame = new JFrame();
 		this.frame.setTitle("Editable Chomosome Viewer");
-
-		// createButtonGrid(); // May or may not add
 		this.buttonGrid = new JPanel();
-
 		this.frame.add(createAdminPanel(), BorderLayout.SOUTH);
-
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.frame.setSize(500, 500);
 		this.frame.setVisible(true);

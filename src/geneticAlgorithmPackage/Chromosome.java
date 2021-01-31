@@ -8,6 +8,7 @@ public class Chromosome {
 	public Chromosome() {
 		for (int i = 0; i < 100; i++) {
 			Gene gene = new Gene(i);
+			gene.addActionListener(new geneListener(gene));
 			this.geneList.add(gene);
 		}
 	}
@@ -16,6 +17,7 @@ public class Chromosome {
 		for (int index = 0; index < genes.length(); index++) {
 			int bit = Character.getNumericValue(genes.charAt(index));
 			Gene gene = new Gene(index, bit);
+			gene.addActionListener(new geneListener(gene));
 			this.geneList.add(gene);
 		}
 	}

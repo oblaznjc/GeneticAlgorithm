@@ -17,18 +17,17 @@ public class Gene extends JButton {
 	public Gene(int index) {
 		Random random = new Random();
 		this.bit = random.nextInt(2);
-		if (this.bit == 0) {
-			this.setBackground(zeroBitBackground);
-			this.setForeground(zeroBitForeground);
-		} else {
-			this.setBackground(oneBitBackground);
-			this.setForeground(oneBitForeground);
-		}
+		updateColor();
 		this.setText("" + index);
 	}
 
 	public Gene(int index, int bit) {
 		this.bit = bit;
+		updateColor();
+		this.setText("" + index);
+	}
+
+	public void updateColor() {
 		if (this.bit == 0) {
 			this.setBackground(zeroBitBackground);
 			this.setForeground(zeroBitForeground);
@@ -36,6 +35,14 @@ public class Gene extends JButton {
 			this.setBackground(oneBitBackground);
 			this.setForeground(oneBitForeground);
 		}
-		this.setText("" + index);
+	}
+
+	public void changeBit() {
+		if (this.bit == 0) {
+			this.bit = 1;
+		} else {
+			this.bit = 0;
+		}
+		updateColor();
 	}
 }
