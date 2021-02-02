@@ -31,7 +31,13 @@ public class saveListener implements ActionListener {
 
 		try {
 			PrintWriter printWriter = new PrintWriter(this.selectedFile);
-			printWriter.println(this.editableViewer.getChromosome().getUpdatedGeneString());
+
+			try {
+				printWriter.println(this.editableViewer.getChromosome().getUpdatedGeneString());
+			} catch (NullPointerException e) {
+				this.editableViewer.frame.setTitle("Load chromosome before saving!");
+			}
+
 			printWriter.close();
 		} catch (FileNotFoundException e1) {
 			System.out.println("File not found");
