@@ -4,7 +4,15 @@ import java.awt.Color;
 import java.util.Random;
 
 import javax.swing.JButton;
-
+/**
+ * 
+ * @author oblaznjc and gottlijd
+ * 
+ *         Purpose: <br>
+ *         Restriction: <br>
+ *         For example: <br>
+ *
+ */
 public class Gene extends JButton {
 
 	private static final Color oneBitBackground = Color.GREEN;

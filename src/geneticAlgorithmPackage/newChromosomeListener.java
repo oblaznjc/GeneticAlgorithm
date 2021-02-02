@@ -2,7 +2,15 @@ package geneticAlgorithmPackage;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * 
+ * @author oblaznjc and gottlijd
+ * 
+ *         Purpose: <br>
+ *         Restriction: <br>
+ *         For example: <br>
+ *
+ */
 public class newChromosomeListener implements ActionListener {
 
 	private EditableViewer editableViewer;

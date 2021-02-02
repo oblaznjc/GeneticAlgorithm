@@ -3,7 +3,15 @@ package geneticAlgorithmPackage;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
-
+/**
+ * 
+ * @author oblaznjc and gottlijd
+ * 
+ *         Purpose: <br>
+ *         Restriction: <br>
+ *         For example: <br>
+ *
+ */
 public class mutateListener implements ActionListener {
 
 	private EditableViewer editableViewer;

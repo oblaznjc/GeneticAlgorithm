@@ -8,6 +8,15 @@ import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 
+/**
+ * 
+ * @author oblaznjc and gottlijd
+ * 
+ *         Purpose: <br>
+ *         Restriction: <br>
+ *         For example: <br>
+ *
+ */
 public class loadListener implements ActionListener {
 
 	private EditableViewer editableViewer;

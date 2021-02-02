@@ -1,7 +1,15 @@
 package geneticAlgorithmPackage;
 
 import java.util.ArrayList;
-
+/**
+ * 
+ * @author oblaznjc and gottlijd
+ * 
+ *         Purpose: <br>
+ *         Restriction: <br>
+ *         For example: <br>
+ *
+ */
 public class Chromosome {
 	ArrayList<Gene> geneList = new ArrayList<Gene>();
 	private String geneString = "";

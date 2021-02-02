@@ -7,6 +7,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * 
+ * @author oblaznjc and gottlijd
+ * 
+ *         Purpose: <br>
+ *         Restriction: <br>
+ *         For example: <br>
+ *
+ */
 public class EditableViewer {
 
 	public JFrame frame;
@@ -82,15 +91,15 @@ public class EditableViewer {
 		String text = this.mutationRate.getText();
 		try {
 			int mutationNumber = Integer.parseInt(text);
-			if(mutationNumber < 0 || mutationNumber > this.getChromosome().getGeneList().size()) {
+			if (mutationNumber < 0 || mutationNumber > this.getChromosome().getGeneList().size()) {
 				throw new NumberFormatException();
 			}
 			return mutationNumber;
-		} catch(NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			this.frame.setTitle("Enter Mutation Rate between 0 and " + this.getChromosome().getGeneList().size());
 			return 0;
 		}
-		
+
 	}
 
 	void updateMutantTitle() {
