@@ -11,9 +11,10 @@ import javax.swing.JTextField;
  * 
  * @author oblaznjc and gottlijd
  * 
- *         Purpose: <br>
- *         Restriction: <br>
- *         For example: <br>
+ *         Purpose: Visualizes a chromosome that can be manipulated by the user
+ *         <br>
+ *         Restriction: one chromosome loaded at a time <br>
+ *         For example: EditableViewer editableViewer = new EditableViewer()<br>
  *
  */
 public class EditableViewer {
