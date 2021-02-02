@@ -13,8 +13,9 @@ public class EditableViewer {
 	private JPanel buttonGrid;
 	public final String title = "Editable Chomosome Viewer";
 	private Chromosome chromosome;
+	private JTextField mutationRate;
 
-	public EditableViewer() { 
+	public EditableViewer() {
 		this.chromosome = null;
 		this.frame = new JFrame();
 		this.frame.setTitle(title);
@@ -32,7 +33,7 @@ public class EditableViewer {
 		JButton loadButton = new JButton("Load");
 		JButton saveButton = new JButton("Save");
 		JButton mutateButton = new JButton("Mutate");
-		JTextField mutationRate = new JTextField("Mutation Rate");
+		this.mutationRate = new JTextField("(input / num genes)");
 		adminPanel.add(newChromosomeButton);
 		adminPanel.add(loadButton);
 		adminPanel.add(saveButton);
@@ -42,13 +43,14 @@ public class EditableViewer {
 		loadButton.addActionListener(new loadListener(this));
 		saveButton.addActionListener(new saveListener(this));
 		newChromosomeButton.addActionListener(new newChromosomeListener(this));
+		mutateButton.addActionListener(new mutateListener(this));
 		return adminPanel;
 	}
 
 	public void createButtonGrid() {
 		this.buttonGrid.removeAll();
 		this.buttonGrid.setLayout(new GridLayout(10, 10));
-		this.chromosome = new Chromosome();
+		this.chromosome = new Chromosome(this);
 		for (Gene gene : getChromosome().geneList) {
 			gene.setSize(30, 30);
 			this.buttonGrid.add(gene);
@@ -72,6 +74,16 @@ public class EditableViewer {
 
 	public Chromosome getChromosome() {
 		return chromosome;
+	}
+
+	public int getMutationNumber() {
+		String text = this.mutationRate.getText();
+		int mutationNumber = Integer.parseInt(text);
+		return mutationNumber;
+	}
+
+	void updateMutantTitle() {
+		this.frame.setTitle(this.title + ": Mutant");
 	}
 
 }

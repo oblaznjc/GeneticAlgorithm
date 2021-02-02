@@ -23,7 +23,7 @@ public class saveListener implements ActionListener {
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setCurrentDirectory(new File(System.getProperty("user.home") + System.getProperty("file.separator")
 				+ "git" + System.getProperty("file.separator") + "GeneticAlgorithm"
-				+ System.getProperty("file.separator") + "chromosomeRepo"));
+				+ System.getProperty("file.separator") + "chromosomeRepo")); // professor does not have access
 		int result = fileChooser.showOpenDialog(fileChooser);
 		if (result == JFileChooser.APPROVE_OPTION) {
 			this.selectedFile = fileChooser.getSelectedFile();

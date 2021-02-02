@@ -38,7 +38,7 @@ public class loadListener implements ActionListener {
 				// System.out.println(line);
 				geneString += line;
 			}
-			Chromosome chromosome = new Chromosome(geneString);
+			Chromosome chromosome = new Chromosome(this.editableViewer, geneString);
 			this.editableViewer.frame.setTitle(this.editableViewer.title + ": " + this.selectedFile.getName());
 			this.editableViewer.createButtonGrid(chromosome);
 
