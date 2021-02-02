@@ -57,6 +57,7 @@ public class EditableViewer {
 		}
 		this.frame.add(this.buttonGrid);
 		this.frame.setVisible(true);
+		this.frame.repaint();
 
 	}
 
@@ -70,6 +71,7 @@ public class EditableViewer {
 		}
 		this.frame.add(this.buttonGrid);
 		this.frame.setVisible(true);
+		this.frame.repaint();
 	}
 
 	public Chromosome getChromosome() {
