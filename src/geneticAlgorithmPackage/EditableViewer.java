@@ -80,8 +80,17 @@ public class EditableViewer {
 
 	public int getMutationNumber() {
 		String text = this.mutationRate.getText();
-		int mutationNumber = Integer.parseInt(text);
-		return mutationNumber;
+		try {
+			int mutationNumber = Integer.parseInt(text);
+			if(mutationNumber < 0 || mutationNumber > this.getChromosome().getGeneList().size()) {
+				throw new NumberFormatException();
+			}
+			return mutationNumber;
+		} catch(NumberFormatException e) {
+			this.frame.setTitle("Enter Mutation Rate between 0 and " + this.getChromosome().getGeneList().size());
+			return 0;
+		}
+		
 	}
 
 	void updateMutantTitle() {
