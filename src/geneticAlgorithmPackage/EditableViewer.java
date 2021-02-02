@@ -24,6 +24,9 @@ public class EditableViewer {
 	private Chromosome chromosome;
 	private JTextField mutationRate;
 
+	/**
+	 * ensures: creates a specific JPanel and instantiates chromosome
+	 */
 	public EditableViewer() {
 		this.chromosome = null;
 		this.frame = new JFrame();
@@ -36,6 +39,11 @@ public class EditableViewer {
 
 	}
 
+	/**
+	 * ensures: creates an admin panel and associated buttons with listeners
+	 * 
+	 * @return the admin panel to be added to frame
+	 */
 	private JPanel createAdminPanel() {
 		JPanel adminPanel = new JPanel();
 		JButton newChromosomeButton = new JButton("New Chromosome");
@@ -56,6 +64,10 @@ public class EditableViewer {
 		return adminPanel;
 	}
 
+	/**
+	 * ensures: creates a randomized chromosome and and adds it to a button grid
+	 * panel
+	 */
 	public void createButtonGrid() {
 		this.buttonGrid.removeAll();
 		this.buttonGrid.setLayout(new GridLayout(10, 10));
@@ -70,6 +82,12 @@ public class EditableViewer {
 
 	}
 
+	/**
+	 * ensures: accepts a loaded chromosome and and adds it to a button grid
+	 * 
+	 * @param chromosome <br>
+	 *                   requires: chromosome
+	 */
 	public void createButtonGrid(Chromosome chromosome) {
 		this.chromosome = chromosome;
 		this.buttonGrid.removeAll();
@@ -83,10 +101,21 @@ public class EditableViewer {
 		this.frame.repaint();
 	}
 
+	/**
+	 * ensures: returns the chromosome visualized in editable viewer
+	 * 
+	 * @return chromosome
+	 */
 	public Chromosome getChromosome() {
 		return chromosome;
 	}
 
+	/**
+	 * ensures: gets the user input from mutation rate text field
+	 * 
+	 * @return user input if between 0 and chromosome size <br>
+	 *         else returns 0
+	 */
 	public int getMutationNumber() {
 		String text = this.mutationRate.getText();
 		try {
@@ -102,6 +131,9 @@ public class EditableViewer {
 
 	}
 
+	/**
+	 * ensures: called to rename the title when a mutation occurs
+	 */
 	void updateMutantTitle() {
 		this.frame.setTitle(this.title + ": Mutant");
 	}
