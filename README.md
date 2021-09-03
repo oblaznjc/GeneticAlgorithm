@@ -7,5 +7,8 @@ https://towardsdatascience.com/introduction-to-genetic-algorithms-including-exam
 https://www.linkedin.com/pulse/introduction-optimization-genetic-algorithm-ahmed-gad/
 https://en.wikipedia.org/wiki/Genetic_algorithm
 
+Watch our video demo and explanation:
+https://rose-hulman.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=1f973e7d-a18a-4f12-8457-acd6014a5585
+
 UML Diagram:
 ![alt text](https://github.com/oblaznjc/GeneticAlgorithm/blob/master/PlantUMLGeneticAlgorithm.png?raw=true)
